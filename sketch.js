@@ -3,6 +3,7 @@ const World = Matter.World;
   const Bodies = Matter.Bodies; 
   var engine, world; var object; 
   var ground;
+  var ball;
 
   function setup() { 
     var canvas = createCanvas(400,400); 
@@ -13,11 +14,18 @@ const World = Matter.World;
       isStatic:true
      }
 
-     
 
+  
      ground = Bodies.rectangle(200,390,200,20, ground_options);
       World.add(world,ground); 
       console.log(ground); 
+
+      var ball_options ={
+        restitution:2
+      }
+
+      ball = Bodies.circle(200,100,20);
+      World.add(world,ball);
       
     }
       
@@ -26,6 +34,10 @@ const World = Matter.World;
         Engine.update(engine);
          rectMode(CENTER);
           rect(ground.position.x,ground.position.y,400,20); 
+
+          ellipseMode(RADIUS);
+          ellipse(ball.position.x,ball.position.y,20,20);
+
         }
 
 
